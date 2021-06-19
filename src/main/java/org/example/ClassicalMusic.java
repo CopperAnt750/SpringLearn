@@ -1,11 +1,22 @@
 package org.example;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import javax.annotation.*;
 
-@Component
+
 public class ClassicalMusic implements Music{
 
-    private ClassicalMusic(){};
+    @PostConstruct
+    public void doMyInit(){
+        System.out.println("Do my init!");
+    }
+    @PreDestroy
+    public void doMyDestroy(){
+        System.out.println("Do my destroy!");
+    }
+
+    public ClassicalMusic(){};
 
     @Override
     public String getSong() {
